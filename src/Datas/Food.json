@@ -1,0 +1,98 @@
+[
+  {
+    "id": "0",
+    "name": "Bir Dilim Kepekli Ekmek",
+    "calorie": 86,
+    "imageUrl": "https://w7.pngwing.com/pngs/989/987/png-transparent-three-slices-of-bread-rye-bread-sliced-bread-toast-bread-slices-baked-goods-food-whole-grain.png"
+  },
+  {
+    "id": "1",
+    "name": "Bir Bardak Su",
+    "calorie": 0,
+    "imageUrl": "https://w7.pngwing.com/pngs/986/682/png-transparent-a-glass-of-water-and-a-glass-product-kind-glass-cups.png"
+  },
+  {
+    "id": "2",
+    "name": "Bir Dilim Peynir",
+    "calorie": 93,
+    "imageUrl": "https://w7.pngwing.com/pngs/298/721/png-transparent-processed-cheese-gruyere-cheese-montasio-parmigiano-reggiano-beyaz-peynir-cheese-food-cheese-beyaz-peynir.png"
+  },
+  {
+    "id": "3",
+    "name": "Bir Adet Zeytin",
+    "calorie": 5,
+    "imageUrl": "https://w7.pngwing.com/pngs/831/961/png-transparent-olive-illustration-black-olives-food-olive-fruit.png"
+  },
+  {
+    "id": "4",
+    "name": "Bir Adet Poğaça",
+    "calorie": 225,
+    "imageUrl": "https://w7.pngwing.com/pngs/146/135/png-transparent-croissant-pogača-simit-borek-breakfast-croissant-baked-goods-food-cheese.png"
+  },
+  {
+    "id": "5",
+    "name": "Bir Dilim Beyaz Ekmek",
+    "calorie": 64,
+    "imageUrl": "https://w7.pngwing.com/pngs/41/575/png-transparent-graham-bread-white-bread-rye-bread-toast-slice-baked-goods-gluten-whole-grain-thumbnail.png"
+  },
+  {
+    "id": "6",
+    "name": "Bir Adet Elma",
+    "calorie": 52,
+    "imageUrl": "https://w7.pngwing.com/pngs/765/668/png-transparent-charlotte-varenye-apple-fruit-apple-fruit-natural-foods-food-fruit.png"
+  },
+  {
+    "id": "7",
+    "name": "Bir Adet Armut",
+    "calorie": 104,
+    "imageUrl": "https://e7.pngegg.com/pngimages/206/613/png-clipart-green-pear-fruit-pear-fruit-food-fruits.png"
+  },
+  {
+    "id": "8",
+    "name": "Bir Adet Kiraz",
+    "calorie": 5,
+    "imageUrl": "https://w7.pngwing.com/pngs/970/313/png-transparent-cherry-huaniuzhen-qinzhou-district-auglis-cherry-food-fruit-cherries.png"
+  },
+  {
+    "id": "9",
+    "name": "Bir Dilim Karuz",
+    "calorie": 90,
+    "imageUrl": "https://e1.pngegg.com/pngimages/746/67/png-clipart-fruit-four-slice-of-watermelons-thumbnail.png"
+  },
+  {
+    "id": "10",
+    "name": "Bir Dilim Kavun",
+    "calorie": 76,
+    "imageUrl": "https://e7.pngegg.com/pngimages/524/1010/png-clipart-slice-of-cantaloupe-melon-slices-food-fruits.png"
+  },
+  {
+    "id": "11",
+    "name": "1 Kaşık Yoğurt",
+    "calorie": 30,
+    "imageUrl": "https://e7.pngegg.com/pngimages/51/239/png-clipart-ceramic-bowl-with-soup-yoghurt-cucumber-sauce-food-yoghurt.png"
+  },
+  {
+    "id": "12",
+    "name": "1 Su Bardagı Çay",
+    "calorie": 0,
+    "imageUrl": "https://w7.pngwing.com/pngs/79/668/png-transparent-green-tea-oolong-tieguanyin-drink-tea-glass-food-tea.png"
+  },
+  {
+    "id": "13",
+    "name": "Bir Kaşık Etsiz Sebze Yemeği",
+    "calorie": 11,
+    "imageUrl": "https://www.durulezzetler.com/wp-content/uploads/2022/04/eksili-köfte.png"
+  },
+  {
+    "id": "14",
+    "name": "Bir Adet Köfte",
+    "calorie": 50,
+    "imageUrl": "https://www.diyetkolik.com/site_media/media/nutrition_images/kofte_1.jpg"
+  },
+  {
+    "id": "15",
+    "name": "Bir Kaşık Mercimek Çorbası",
+    "calorie": 3,
+    "imageUrl": "https://www.diyetkolik.com/site_media/media/nutrition_images/mercimek-corbasi.jpg"
+  }
+]
