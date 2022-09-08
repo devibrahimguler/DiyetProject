@@ -1,19 +1,60 @@
-import React from "react";
-import { SafeAreaView, FlatList, Text } from "react-native";
-import styles from "./Repast.style";
+import React, {useState} from 'react';
+import {SafeAreaView, FlatList} from 'react-native';
+import firestore from '@react-native-firebase/firestore';
+import styles from './Repast.style';
 
-import repast_data from "../../Datas/Food.json";
+import RepastCard from '../../components/card/RepastCard';
+import useFetch from '../../hooks/useFetch';
 
-const Repast = () => {
-    const renderRepast = ({item}) => <Text>{item.name}</Text>
-    return (
-        <SafeAreaView style={styles.container}>
-            <FlatList
-                data={repast_data}
-                renderItem={renderRepast}
-            />
-        </SafeAreaView>
-    );
-}
+import InputModal from '../../components/InputModal';
+import Button from '../../components/Button';
+
+const Repast = ({navigation}) => {
+  const {data, error, loading} = useFetch('repasts');
+  const [isVisible, setIsVisible] = useState(false);
+  const [repast, setRepast] = useState('');
+
+  const handleToglleVisiblity = () => {
+    setIsVisible(!isVisible);
+  };
+  const handleAddDatabase = () => {
+    if (repast != '') {
+      const object = {
+        name: repast,
+      };
+      firestore().collection('repasts').add(object);
+      handleToglleVisiblity();
+    }
+  };
+  const toProgram = (repastTitle, selected) => {
+    navigation.navigate('ProgramPage', {repastTitle, selected});
+  };
+  const renderRepast = ({item}) => (
+    <RepastCard
+      item={item.data()}
+      onPress={() =>
+        toProgram(item.data().name, item.ref._documentPath._parts[1])
+      }
+    />
+  );
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList data={data} renderItem={renderRepast} />
+      <Button
+        name={'Öğün Ekle'}
+        thema={'tertiary'}
+        onPress={handleToglleVisiblity}
+      />
+      <InputModal
+        isVisible={isVisible}
+        onClose={handleToglleVisiblity}
+        onPress={handleAddDatabase}
+        value={repast}
+        onChangeText={setRepast}
+        placeholder={'Öğün Adını Giriniz...'}
+      />
+    </SafeAreaView>
+  );
+};
 
 export default Repast;

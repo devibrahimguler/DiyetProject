@@ -43,5 +43,19 @@ export default {
         title: {
             ...base_style.title,
         }
+    }),
+    tertiary: StyleSheet.create({
+        container: {
+            borderTopWidth: 2,
+            borderColor:colors.button,
+            padding: paddings.button,
+            marginVertical: margins.container,
+            marginHorizontal: margins.button
+        },
+        title: {
+            fontSize: 16,
+            textAlign: "center",
+            color: colors.button,
+        }
     })
 };

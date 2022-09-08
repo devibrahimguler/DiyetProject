@@ -1,12 +1,13 @@
-import React from "react";
-import { Text, Image, TouchableOpacity } from "react-native";
+import React from 'react';
+import {Text, TouchableOpacity} from 'react-native';
+import styles from './RepastCard.style';
 
-const RepastCard = () => {
-    return (
-        <TouchableOpacity>
-            <Text>MealsCard</Text>
-        </TouchableOpacity>
-    );
-}
+const RepastCard = ({item, onPress}) => {
+  return (
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <Text style={styles.title}>{item.name}</Text>
+    </TouchableOpacity>
+  );
+};
 
 export default RepastCard;
