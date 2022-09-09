@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {SafeAreaView, FlatList, Text, View} from 'react-native';
-import firestore from '@react-native-firebase/firestore';
 import styles from './Program.style';
 
 import MealsCard from '../../components/card/MealsCard';

@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import {SafeAreaView, FlatList} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import styles from './Repast.style';
+import DatePicker from "react-native-date-picker";
 
 import RepastCard from '../../components/card/RepastCard';
+import SelectedPicter from "../../components/SelectedPicter";
 import useFetch from '../../hooks/useFetch';
 
 import InputModal from '../../components/InputModal';
@@ -12,6 +14,8 @@ import Button from '../../components/Button';
 const Repast = ({navigation}) => {
   const {data, error, loading} = useFetch('repasts');
   const [isVisible, setIsVisible] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [date, setDate] = useState(new Date());
   const [repast, setRepast] = useState('');
 
   const handleToglleVisiblity = () => {
@@ -37,8 +41,16 @@ const Repast = ({navigation}) => {
       }
     />
   );
+  const handleDatePicker = (date)=>{
+    handleDatePickerToggle();
+    setDate(date);
+  }
+  const handleDatePickerToggle = () =>{
+    setOpen(!open);
+  }
   return (
     <SafeAreaView style={styles.container}>
+      <SelectedPicter date={date} onPress={handleDatePickerToggle} />
       <FlatList data={data} renderItem={renderRepast} />
       <Button
         name={'Öğün Ekle'}
@@ -52,6 +64,14 @@ const Repast = ({navigation}) => {
         value={repast}
         onChangeText={setRepast}
         placeholder={'Öğün Adını Giriniz...'}
+      />
+      <DatePicker
+        modal
+        open={open}
+        date={date}
+        onConfirm={handleDatePicker}
+        onCancel={handleDatePickerToggle}
+        mode={"date"}
       />
     </SafeAreaView>
   );
