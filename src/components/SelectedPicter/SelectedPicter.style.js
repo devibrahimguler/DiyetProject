@@ -6,16 +6,31 @@ import radiuses from "../../styles/radiuses";
 
 export default StyleSheet.create({
     container: {
-        backgroundColor: colors.button,
-        margin: margins.container,
-        padding: paddings.button,
-        borderRadius: radiuses.buttonRadius,
         alignItems: "center",
+        justifyContent: "center",
+        borderBottomWidth: 1,
+        borderBottomColor: colors.button,
+    },
+    inner_container:{
+        margin: margins.container,
+        paddingVertical: 2,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    body_container:{
+        flexDirection: "row",
     },
     title: {
         fontSize: 20,
         margin: 5,
-        textAlign: "center",
         fontStyle: "italic"
-    }
+    },
+    sparator: {
+        fontSize: 20,
+        margin: 5,
+        fontStyle: "italic"
+    },
+    icon: {
+        textAlign: "center"
+    },
 });
