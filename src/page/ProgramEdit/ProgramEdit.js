@@ -10,8 +10,8 @@ import Button from '../../components/Button';
 import food from "../../Datas/Food.json";
 
 const ProgramEdit = ({route}) => {
-  const {docId} = route.params;
-  const renderMeal = ({item}) => <MealsCard meal={item} docId={docId} isProgram={true} />;
+  const {selected,currentDate} = route.params;
+  const renderMeal = ({item}) => <MealsCard meal={item} docId={selected} isProgram={true} currentDate={currentDate} />;
 
   return (
     <SafeAreaView style={styles.container}>

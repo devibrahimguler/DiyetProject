@@ -6,16 +6,16 @@ import radiuses from "../../../styles/radiuses";
 
 export default StyleSheet.create({
     container: {
-        backgroundColor: colors.back,
-        padding: paddings.button,
-        marginVertical: margins.container,
-        marginHorizontal: margins.button,
-        borderRadius: radiuses.buttonRadius
+        margin: 10
+    },
+    inner_container:{
+        borderBottomWidth: 1,
+        borderColor: colors.back
     },
     title : {
-        fontSize: 22,
-        fontWeight: "bold",
-        textAlign: "center",
+        fontSize: 18,
+        margin: 5,
         textTransform: "uppercase",
+        color: colors.button,
     }
 });

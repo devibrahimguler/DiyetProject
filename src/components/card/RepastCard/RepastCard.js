@@ -1,11 +1,13 @@
 import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import styles from './RepastCard.style';
 
 const RepastCard = ({item, onPress}) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Text style={styles.title}>{item.name}</Text>
+      <View style={styles.inner_container}>
+        <Text style={styles.title}>{item.name}</Text>
+      </View>
     </TouchableOpacity>
   );
 };

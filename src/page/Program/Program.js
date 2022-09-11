@@ -8,14 +8,12 @@ import useFetch from '../../hooks/useFetch';
 import Button from '../../components/Button';
 
 const Program = ({navigation,route}) => {
-  const docId = route.params.selected;
-  const {repastTitle} = route.params;
-  const {data, error, loading} = useFetch('repasts', docId, 'program');
-
+  const {repastTitle, selected, currentDate} = route.params;
+  const {data, error, loading} = useFetch(currentDate,selected);
   const toProgramEdit = () => {
-    navigation.navigate("ProgramEditPage", {docId});
+    navigation.navigate("ProgramEditPage", {selected, currentDate});
   }
-  const renderRepast = ({item}) => <MealsCard meal={item.data()} docId={docId} curQuantity={item.data().quantity} />;
+  const renderRepast = ({item}) => <MealsCard meal={item.data()} docId={selected} curQuantity={item.data().quantity} currentDate={currentDate} />;
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.inner_container}>

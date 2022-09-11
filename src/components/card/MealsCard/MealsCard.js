@@ -7,8 +7,8 @@ import firestore from '@react-native-firebase/firestore';
 import useFetch from '../../../hooks/useFetch';
 import IconButton from '../../IconButton';
 
-const MealsCard = ({meal, docId, isProgram, curQuantity}) => {
-  const {data, error, loading} = useFetch('repasts', docId, 'program');
+const MealsCard = ({meal, docId, isProgram, curQuantity, currentDate}) => {
+  const {data, error, loading} = useFetch(currentDate, docId);
   const [counter, setCounter] = useState(0);
 
   const handleAdd = () => {
@@ -39,22 +39,26 @@ const MealsCard = ({meal, docId, isProgram, curQuantity}) => {
     if (object.quantity != counter) {
       if (counter > 0) {
         firestore()
+          .collection('date')
+          .doc(currentDate)
           .collection('repasts')
           .doc(docId)
           .collection('program')
           .doc(ref)
           .update(object);
+          Alert.alert('Güncellendi !', 'İşlem Başarılı bir şekilde gerçekleşti...');
       }
-      Alert.alert('Güncellendi !', 'İşlem Başarılı bir şekilde gerçekleşti...');
     } else {
       if (counter > 0) {
         firestore()
+          .collection('date')
+          .doc(currentDate)
           .collection('repasts')
           .doc(docId)
           .collection('program')
           .add(object);
+          Alert.alert('Eklendi !', 'İşlem Başarılı bir şekilde gerçekleşti...');
       }
-      Alert.alert('Eklendi !', 'İşlem Başarılı bir şekilde gerçekleşti...');
     }
     setCounter(0);
   };

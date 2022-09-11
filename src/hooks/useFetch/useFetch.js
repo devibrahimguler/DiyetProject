@@ -1,15 +1,17 @@
 import {useState, useEffect} from 'react';
 import firestore from '@react-native-firebase/firestore';
 
-const useFetch = (col,id = 0, col2 = "") => {
+const useFetch = (id, id2) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const fetch = () => {
-    if (col2 == "") {
+    if (!id2) {
       firestore()
-      .collection(col)
+      .collection("date")
+      .doc(id)
+      .collection("repasts")
       .onSnapshot(responseData => {
         setData(responseData.docs);
         setLoading(false);
@@ -19,9 +21,11 @@ const useFetch = (col,id = 0, col2 = "") => {
       });
     } else {
       firestore()
-      .collection(col)
+      .collection("date")
       .doc(id)
-      .collection(col2)
+      .collection("repasts")
+      .doc(id2)
+      .collection("program")
       .onSnapshot(responseData => {
         setData(responseData.docs);
         setLoading(false);
@@ -35,7 +39,7 @@ const useFetch = (col,id = 0, col2 = "") => {
 
   useEffect(() => {
     fetch();
-  }, []);
+  }, [id]);
 
   return {data, error, loading};
 };
