@@ -9,8 +9,9 @@ export default StyleSheet.create({
         flexDirection: "row",
         marginHorizontal: margins.inputHorizontal,
         marginVertical: margins.inputVertical,
-        backgroundColor: colors.textBack,
+        borderColor: colors.back,
         padding: paddings.input,
+        borderWidth: 1,
         borderRadius: radiuses.inputRadius,
     },
     inner_container: {

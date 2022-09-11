@@ -20,6 +20,7 @@ const Repast = ({navigation}) => {
   
   const handleToglleVisiblity = () => {
     setIsVisible(!isVisible);
+    setRepast("");
   };
   const handleAddDatabase = () => {
     if (repast != '') {

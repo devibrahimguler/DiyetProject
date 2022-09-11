@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     container: {
-        height: 200,
+        height: 180,
         backgroundColor: "white",
         padding: 15,
         marginHorizontal:10,
