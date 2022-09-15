@@ -1,12 +1,26 @@
 import React from "react";
-import { View, Image } from "react-native";
+import { View, Image, TouchableOpacity } from "react-native";
 import styles from "./ProImage.style";
+import {launchImageLibrary} from 'react-native-image-picker';
+import storage from '@react-native-firebase/storage';
+import auth from "@react-native-firebase/auth";
 
-const ProImage = () => {
+import useFetch from '../../hooks/useFetch';
+
+const ProImage = ({dataRow}) => {
+    const {data, error, loading} = useFetch();
+
+    const handleSelectImage = async() => {
+        const result = await launchImageLibrary();
+        const reference = storage().ref(`${auth().currentUser.uid}.png`);
+        const pathToFile = result.assets[0].uri;
+        console.log(pathToFile);
+        await reference.putFile(pathToFile);
+    }
     return (
-        <View style={styles.container}>
-            <Image style={styles.image} source={{uri:"https://firebasestorage.googleapis.com/v0/b/diyetproject.appspot.com/o/user%2Fplaceholder.png?alt=media&token=31be700b-934e-4fc5-bfde-008a610c0866"}} />
-        </View>
+        <TouchableOpacity style={styles.container} onPress={handleSelectImage}>
+            <Image style={styles.image} source={{uri:data[dataRow] == "" ? data[dataRow] : "https://firebasestorage.googleapis.com/v0/b/diyetproject.appspot.com/o/user%2Fplaceholder.png?alt=media&token=3096b600-4494-415a-8bb4-db55254b64fc"}} />
+        </TouchableOpacity>
     );
 }
 

@@ -9,7 +9,7 @@ export default StyleSheet.create({
     image: {
         height: 120,
         width: 120,
-        borderRadius: 40,
+        borderRadius: 60,
         borderWidth: 1,
     },
 });

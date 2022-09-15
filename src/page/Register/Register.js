@@ -3,6 +3,7 @@ import {SafeAreaView, View,Alert} from 'react-native';
 import styles from './Register.style';
 import {Formik} from 'formik';
 import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';

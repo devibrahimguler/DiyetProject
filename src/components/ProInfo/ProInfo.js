@@ -7,12 +7,11 @@ import InfoCard from "../card/InfoCard";
 const ProInfo = () => {
     return (
         <View style={styles.container}>
-            <InfoCard />
-            <InfoCard />
-            <InfoCard />
-            <InfoCard />
-            <InfoCard />
-            <InfoCard />
+            <InfoCard title={"isim"} dataRow={"name"} />
+            <InfoCard title={"soyisim"} dataRow={"surname"}  />
+            <InfoCard title={"yaş"} dataRow={"age"}  />
+            <InfoCard title={"boy"} dataRow={"size"}  />
+            <InfoCard title={"kilo"} dataRow={"weight"}  />
         </View>
     );
 }

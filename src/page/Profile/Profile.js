@@ -8,7 +8,7 @@ import ProInfo from "../../components/ProInfo";
 const Profile = () => {
     return (
         <SafeAreaView style={styles.container}>
-            <ProImage />
+            <ProImage dataRow={"imageUrl"} />
             <ProInfo />
         </SafeAreaView>
     );

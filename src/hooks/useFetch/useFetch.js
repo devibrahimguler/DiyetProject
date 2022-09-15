@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import firestore from '@react-native-firebase/firestore';
+import auth from "@react-native-firebase/auth";
 
 const useFetch = (id, id2) => {
   const [data, setData] = useState([]);
@@ -7,7 +8,21 @@ const useFetch = (id, id2) => {
   const [loading, setLoading] = useState(true);
 
   const fetch = () => {
-    if (!id2) {
+    if (!id) {
+      firestore()
+      .collection("user")
+      .doc(auth().currentUser.uid)
+      .get()
+      .then(responseData => {
+        setData(responseData.data());
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      })
+    }
+    else if (!id2) {
       firestore()
       .collection("date")
       .doc(id)
