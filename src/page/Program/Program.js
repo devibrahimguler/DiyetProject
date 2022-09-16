@@ -14,6 +14,8 @@ const Program = ({navigation,route}) => {
     navigation.navigate("ProgramEditPage", {selected, currentDate});
   }
   const renderRepast = ({item}) => <MealsCard meal={item.data()} docId={selected} curQuantity={item.data().quantity} currentDate={currentDate} />;
+  if(loading) {return <Text>loading</Text>}
+  if(error) {return <Text>error</Text>}
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.inner_container}>

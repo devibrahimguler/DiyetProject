@@ -1,55 +1,80 @@
 import {useState, useEffect} from 'react';
 import firestore from '@react-native-firebase/firestore';
-import auth from "@react-native-firebase/auth";
+import auth from '@react-native-firebase/auth';
 
-const useFetch = (id, id2) => {
+const useFetch = (id, id2, col) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const fetch = () => {
-    if (!id) {
+    if (col == "food"){
       firestore()
-      .collection("user")
+      .collection('user')
       .doc(auth().currentUser.uid)
-      .get()
-      .then(responseData => {
-        setData(responseData.data());
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      })
+      .collection('food')
+      .orderBy('total', 'desc')
+      .onSnapshot(
+        responseData => {
+          setData(responseData.docs);
+          setLoading(false);
+        },
+        err => {
+          setError(err.message);
+          setLoading(false);
+        },
+      );
     }
-    else if (!id2) {
+    else if (!id) {
       firestore()
-      .collection("date")
-      .doc(id)
-      .collection("repasts")
-      .onSnapshot(responseData => {
-        setData(responseData.docs);
-        setLoading(false);
-      },(err) => {
-        setError(err.message);
-        setLoading(false);
-      });
+        .collection('user')
+        .doc(auth().currentUser.uid)
+        .get()
+        .then(responseData => {
+          setData(responseData);
+          setLoading(false);
+        })
+        .catch(err => {
+          setError(err.message);
+          setLoading(false);
+        });
+    } else if (!id2) {
+      firestore()
+        .collection('user')
+        .doc(auth().currentUser.uid)
+        .collection('date')
+        .doc(id)
+        .collection('repasts')
+        .onSnapshot(
+          responseData => {
+            setData(responseData.docs);
+            setLoading(false);
+          },
+          err => {
+            setError(err.message);
+            setLoading(false);
+          },
+        );
     } else {
       firestore()
-      .collection("date")
-      .doc(id)
-      .collection("repasts")
-      .doc(id2)
-      .collection("program")
-      .onSnapshot(responseData => {
-        setData(responseData.docs);
-        setLoading(false);
-      },(err) => {
-        setError(err.message);
-        setLoading(false);
-      });
+        .collection('user')
+        .doc(auth().currentUser.uid)
+        .collection('date')
+        .doc(id)
+        .collection('repasts')
+        .doc(id2)
+        .collection('program')
+        .onSnapshot(
+          responseData => {
+            setData(responseData.docs);
+            setLoading(false);
+          },
+          err => {
+            setError(err.message);
+            setLoading(false);
+          },
+        );
     }
-    
   };
 
   useEffect(() => {

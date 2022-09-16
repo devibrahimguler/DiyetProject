@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {SafeAreaView, FlatList} from 'react-native';
+import {SafeAreaView, FlatList, Text} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import styles from './Repast.style';
 import DatePicker from 'react-native-date-picker';
+import auth from "@react-native-firebase/auth";
 
 import RepastCard from '../../components/card/RepastCard';
 import SelectedPicter from '../../components/SelectedPicter';
@@ -15,7 +16,7 @@ const Repast = ({navigation}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState(new Date());
-  const {data, error, loading} = useFetch(id=date.toDateString());
+  const {data, error, loading} = useFetch(date.toDateString());
   const [repast, setRepast] = useState('');
   
   const handleToglleVisiblity = () => {
@@ -27,7 +28,13 @@ const Repast = ({navigation}) => {
       const object = {
         name: repast,
       };
-      firestore().collection("date").doc(date.toDateString()).collection("repasts").add(object);
+      firestore()
+      .collection('user')
+      .doc(auth().currentUser.uid)
+      .collection("date")
+      .doc(date.toDateString())
+      .collection("repasts")
+      .add(object);
       handleToglleVisiblity();
     }
   };
@@ -38,7 +45,7 @@ const Repast = ({navigation}) => {
     <RepastCard
       item={item.data()}
       onPress={() =>
-        toProgram(item.data().name, item.ref._documentPath._parts[3], date.toDateString())
+        toProgram(item.data().name, item.ref._documentPath._parts[5], date.toDateString())
       }
     />
   );
@@ -49,6 +56,8 @@ const Repast = ({navigation}) => {
   const handleDatePickerToggle = () => {
     setOpen(!open);
   };
+  if(loading) {return <Text>loading</Text>}
+  if(error) {return <Text>error</Text>}
   return (
     <SafeAreaView style={styles.container}>
       <SelectedPicter date={date} onPress={handleDatePickerToggle} />

@@ -5,11 +5,12 @@ export default StyleSheet.create({
         margin: 10,
         justifyContent: "center",
         alignItems: "center",
+        marginVertical: 37,
     },
     image: {
-        height: 120,
-        width: 120,
-        borderRadius: 60,
+        height: 150,
+        width: 150,
+        borderRadius: 75,
         borderWidth: 1,
     },
 });

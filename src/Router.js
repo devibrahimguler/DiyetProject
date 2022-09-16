@@ -8,6 +8,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Login from './page/Login';
 import Register from './page/Register';
 import Profile from './page/Profile';
+import Rapor from './page/Rapor';
 import Repast from './page/Repast';
 import Program from './page/Program';
 import ProgramEdit from './page/ProgramEdit';
@@ -59,6 +60,28 @@ const RepastStack = () => {
   );
 };
 
+const ProfilStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="ProfilePage"
+        component={Profile}
+        options={{
+          title: "Profil",
+          headerShown: false
+        }}
+      />
+      <Stack.Screen
+        name="RaporPage"
+        component={Rapor}
+        options={{
+          title: "Rapor",
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const InnerTab = () => {
   return (
     <Tab.Navigator>
@@ -72,12 +95,10 @@ const InnerTab = () => {
         }}
       />
       <Tab.Screen
-        name="ProfilePage"
-        component={Profile}
+        name="ProfileScreen"
+        component={ProfilStack}
         options={{
-          headerTitle: "@" + auth().currentUser.email.split("@")[0],
-          headerTitleAlign: "left",
-          title: "Profil",
+          headerShown: false,
           tabBarIcon: () => { return <Icon name='account-group' size={30} />}
         }}
       />

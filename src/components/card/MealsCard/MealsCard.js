@@ -3,12 +3,14 @@ import {Text, Image, View, Alert} from 'react-native';
 import Counter from '../../Counter';
 import styles from './MealsCard.style';
 import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
 import useFetch from '../../../hooks/useFetch';
 import IconButton from '../../IconButton';
 
 const MealsCard = ({meal, docId, isProgram, curQuantity, currentDate}) => {
-  const {data, error, loading} = useFetch(currentDate, docId);
+  const {data} = useFetch(currentDate, docId);
+  const {data: foodData} = useFetch(null, null, 'food');
   const [counter, setCounter] = useState(0);
 
   const handleAdd = () => {
@@ -20,47 +22,79 @@ const MealsCard = ({meal, docId, isProgram, curQuantity, currentDate}) => {
     }
   };
   const handleAddlist = () => {
-    const object = {
-      id: meal.id,
-      name: meal.name,
-      calorie: meal.calorie,
-      imageUrl: meal.imageUrl,
-      quantity: counter,
-    };
-    let ref = '';
+    if (counter > 0) {
+      const object = {
+        id: meal.id,
+        name: meal.name,
+        calorie: meal.calorie,
+        imageUrl: meal.imageUrl,
+        quantity: counter,
+        isFood: false,
+      };
+      let newCount = counter;
+      data.forEach(val => {
+        if (val.id == object.id) {
+          object.quantity += val.data().quantity;
+        }
+      });
+      foodData.forEach(val => {
+        if (val.id == object.id) {
+          object.isFood = true;
+          newCount += val.data().quantity;
+        }
+      });
 
-    data.forEach(val => {
-      if (val.data().id == object.id) {
-        object.quantity += val.data().quantity;
-        ref = val.ref._documentPath._parts[3];
-      }
-    });
-
-    if (object.quantity != counter) {
-      if (counter > 0) {
+      if (object.quantity != counter) {
         firestore()
+          .collection('user')
+          .doc(auth().currentUser.uid)
           .collection('date')
           .doc(currentDate)
           .collection('repasts')
           .doc(docId)
           .collection('program')
-          .doc(ref)
+          .doc(object.id)
           .update(object);
-          Alert.alert('Güncellendi !', 'İşlem Başarılı bir şekilde gerçekleşti...');
-      }
-    } else {
-      if (counter > 0) {
+
+        Alert.alert(
+          'Güncellendi !',
+          'İşlem Başarılı bir şekilde gerçekleşti...',
+        );
+      } else {
         firestore()
+          .collection('user')
+          .doc(auth().currentUser.uid)
           .collection('date')
           .doc(currentDate)
           .collection('repasts')
           .doc(docId)
           .collection('program')
-          .add(object);
-          Alert.alert('Eklendi !', 'İşlem Başarılı bir şekilde gerçekleşti...');
+          .doc(object.id)
+          .set(object);
+
+        Alert.alert('Eklendi !', 'İşlem Başarılı bir şekilde gerçekleşti...');
       }
+      
+      if (!object.isFood) {
+        object.total = object.quantity * object.calorie;
+        firestore()
+          .collection('user')
+          .doc(auth().currentUser.uid)
+          .collection('food')
+          .doc(object.id)
+          .set(object);
+      } else {
+        object.quantity = newCount;
+        object.total = newCount * object.calorie;
+        firestore()
+          .collection('user')
+          .doc(auth().currentUser.uid)
+          .collection('food')
+          .doc(object.id)
+          .update(object);
+      }
+      setCounter(0);
     }
-    setCounter(0);
   };
   return (
     <View style={styles.container}>
