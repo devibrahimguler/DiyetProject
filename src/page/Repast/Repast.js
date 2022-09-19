@@ -61,6 +61,7 @@ const Repast = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <SelectedPicter date={date} onPress={handleDatePickerToggle} />
+      
       <FlatList
         data={data}
         renderItem={renderRepast}
