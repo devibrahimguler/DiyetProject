@@ -1056,6 +1056,8 @@ PODS:
     - React-jsi (= 0.70.0)
     - React-logger (= 0.70.0)
     - React-perflogger (= 0.70.0)
+  - RNCPushNotificationIOS (1.10.1):
+    - React-Core
   - RNFBApp (15.4.0):
     - Firebase/CoreOnly (= 9.5.0)
     - React-Core
@@ -1117,6 +1119,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "RNCPushNotificationIOS (from `../node_modules/@react-native-community/push-notification-ios`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBFirestore (from `../node_modules/@react-native-firebase/firestore`)"
@@ -1225,6 +1228,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNCPushNotificationIOS:
+    :path: "../node_modules/@react-native-community/push-notification-ios"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBAuth:
@@ -1301,6 +1306,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: 5499b77c0fd57f346a5f0b36bb79fdb020d17d3e
   React-runtimeexecutor: 80c195ffcafb190f531fdc849dc2d19cb4bb2b34
   ReactCommon: de55f940495d7bf87b5d7bf55b5b15cdd50d7d7b
+  RNCPushNotificationIOS: 87b8d16d3ede4532745e05b03c42cff33a36cc45
   RNFBApp: a6fca2cd8f392b5efc1f2ab7bd4b3b64a6039abf
   RNFBAuth: e121a1a5b6e6df0348f62da9bf96e5b58fdffa01
   RNFBFirestore: 76db0e646dbbfb66938674bf5a1a433ebb2c2c92

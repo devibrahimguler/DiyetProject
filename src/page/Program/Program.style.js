@@ -15,6 +15,11 @@ export default StyleSheet.create({
         backgroundColor: colors.back,
         borderRadius: radiuses.buttonRadius,
     },
+    row_container: {
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+    },
     title: {
         fontSize: 20,
         fontWeight: "bold",
