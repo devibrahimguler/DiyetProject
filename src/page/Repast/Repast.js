@@ -16,7 +16,7 @@ const Repast = ({navigation}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState(new Date());
-  const {data, error, loading} = useFetch(date.toDateString());
+  const {data, error, loading} = useFetch(date.toDateString(),null,"repasts");
   const [repast, setRepast] = useState('');
   
   const handleToglleVisiblity = () => {

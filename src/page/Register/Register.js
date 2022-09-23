@@ -21,7 +21,16 @@ const Register = ({navigation}) => {
         auth()
         .createUserWithEmailAndPassword(val.usermail, val.password)
         .then(()=> {
-          Alert.alert("", "Hoşgeldin" + val.usermail);
+          Alert.alert("Hoşgeldin !", val.usermail);
+          var object = {
+            name: "isim",
+            surname: "soyisim",
+            age: "yaş",
+            size: "boy",
+            weight: "kilo",
+            imageUrl: "https://firebasestorage.googleapis.com/v0/b/diyetproject.appspot.com/o/user%2Fplaceholder.png?alt=media&token=3096b600-4494-415a-8bb4-db55254b64fc",
+          };
+          firestore().collection('user').doc(auth().currentUser.uid).set(object);
           navigation.navigate("InnerScreen");
         })
         .catch(err => {
@@ -66,12 +75,12 @@ const Register = ({navigation}) => {
                 placeholder={'Şifre Tekrarı...'}
                 secureTextEntry={true}
               />
-              <Button buttonName={'Kayıt Ol'} onPress={handleSubmit} />
+              <Button name={'Kayıt Ol'} onPress={handleSubmit} />
             </>
           )}
         </Formik>
       </View>
-      <Button buttonName={'Geri'} thema={'secondary'} onPress={toSignIn} />
+      <Button name={'Geri'} thema={'secondary'} onPress={toSignIn} />
     </SafeAreaView>
   );
 };

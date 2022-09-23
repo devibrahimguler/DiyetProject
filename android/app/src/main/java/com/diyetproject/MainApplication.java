@@ -1,5 +1,6 @@
 package com.diyetproject;
 
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 
 import android.app.Application;
@@ -13,6 +14,7 @@ import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
 import com.diyetproject.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
@@ -26,13 +28,9 @@ public class MainApplication extends Application implements ReactApplication {
 
         @Override
         protected List<ReactPackage> getPackages() {
-          @SuppressWarnings("UnnecessaryLocalVariable")
-          // Packages that cannot be autolinked yet can be added manually here, for example:
-          // packages.add(new MyReactNativePackage());
-          return Arrays.<ReactPackage>asList(
-            new PackageList(this).getPackages(), 
-            new VectorIconsPackage()
-          );
+            @SuppressWarnings("UnnecessaryLocalVariable")
+            List<ReactPackage> packages =  new PackageList(this).getPackages();
+            return packages;
         }
 
         @Override

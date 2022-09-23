@@ -62,7 +62,7 @@ const Program = ({navigation,route}) => {
         modal
         open={open}
         date={date}
-        locale={"GB"}
+        locale={"fr"}
         onConfirm={handleDatePicker}
         onCancel={handleDatePickerToggle}
         mode={"time"}

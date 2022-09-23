@@ -25,7 +25,7 @@ const useFetch = (id, id2, col) => {
         },
       );
     }
-    else if (!id) {
+    else if (col == "user") {
       firestore()
         .collection('user')
         .doc(auth().currentUser.uid)
@@ -38,7 +38,7 @@ const useFetch = (id, id2, col) => {
           setError(err.message);
           setLoading(false);
         });
-    } else if (!id2) {
+    } else if (col == "repasts") {
       firestore()
         .collection('user')
         .doc(auth().currentUser.uid)

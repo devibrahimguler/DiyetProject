@@ -18,7 +18,7 @@ const Login = ({navigation}) => {
     auth()
     .signInWithEmailAndPassword(val.usermail, val.password)
     .then(()=> {
-      Alert.alert("", "Hoşgeldin" + val.usermail);
+      Alert.alert("Hoşgeldin !", val.usermail);
       navigation.navigate("InnerScreen");
     })
     .catch(err => {
@@ -56,13 +56,13 @@ const Login = ({navigation}) => {
                 placeholder={'Şifre...'}
                 secureTextEntry={true}
               />
-              <Button buttonName={'Giriş Yap'} onPress={handleSubmit} />
+              <Button name={'Giriş Yap'} onPress={handleSubmit} />
             </>
           )}
         </Formik>
       </View>
-      <Button buttonName={'Kayıt Ol'} thema={'secondary'} onPress={toSingUp}/>
-      <Button buttonName={'Şifremi unuttum !'} thema={'secondary'} onPress={forgetPassword} />
+      <Button name={'Kayıt Ol'} thema={'secondary'} onPress={toSingUp}/>
+      <Button name={'Şifremi unuttum !'} thema={'secondary'} onPress={forgetPassword} />
     </SafeAreaView>
   );
 };

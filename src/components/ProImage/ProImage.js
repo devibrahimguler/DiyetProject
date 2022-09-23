@@ -6,8 +6,6 @@ import storage from '@react-native-firebase/storage';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-import useFetch from '../../hooks/useFetch';
-
 const ProImage = ({data}) => {
   const [imgUrl, setImgUrl] = React.useState(data);
   const handleSelectImage = async () => {
@@ -38,7 +36,7 @@ const ProImage = ({data}) => {
       <Image
         style={styles.image}
         source={{
-          uri:  imgUrl ? imgUrl :"https://firebasestorage.googleapis.com/v0/b/diyetproject.appspot.com/o/user%2Fplaceholder.png?alt=media&token=3096b600-4494-415a-8bb4-db55254b64fc"
+          uri:  imgUrl 
         }}
       />
     </TouchableOpacity>

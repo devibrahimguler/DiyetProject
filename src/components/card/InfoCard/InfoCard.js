@@ -8,7 +8,7 @@ import auth from '@react-native-firebase/auth';
 
 const InfoCard = ({title, dataRow, data}) => {
   const [isEdit, setIsEdit] = React.useState(false);
-  const [value, setValue] = React.useState(data[dataRow]);
+  const [value, setValue] = React.useState(data ? data[dataRow] : title);
   
   const handleEditToggle = () => {
     if (isEdit) {
